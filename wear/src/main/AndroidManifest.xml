@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mockingbird.spinkevich.wear">
+
+    <!--
+    Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.
+    https://developer.android.com/training/scheduling/wakelock
+    -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--
+    The app is designed to show its UI on a watch
+    Should be added to support wear feature
+    -->
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartWatch">
+
+        <!--
+        Restricts using app only on devices with com.google.android.wearable installed
+        https://developer.android.com/guide/topics/manifest/uses-library-element
+        -->
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
+
+        <!--
+        A Wear OS app can work independently of a phone. Users can complete tasks on a watch, without access to an Android or iOS phone.
+        https://developer.android.com/training/wearables/apps/standalone-apps
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="false" />
+        
+        <activity android:name=".WearActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
